@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Python Career Lab | AI時代のPythonエンジニア学習メディア";
+const description =
+  "AIがコードを書く時代に、Pythonで何ができ、どの順で学び、どうスクールを選べばよいかを整理する技術メディアです。";
+
+const capabilities = [
+  {
+    index: "01",
+    title: "AI・機械学習",
+    body: "データの前処理からモデルの評価、精度が出ないときの原因分析までを一貫して扱います。単に生成AIのAPIを呼び出すだけでなく、精度とコストのバランスを見極める土台が身につきます。",
+  },
+  {
+    index: "02",
+    title: "業務自動化",
+    body: "Excelやスプレッドシートの集計、メール送信、ファイル整理、定型レポートの作成など、人間が毎日繰り返している作業を自動化するスクリプトを構築します。",
+  },
+  {
+    index: "03",
+    title: "Web・API開発",
+    body: "社内ツールや外部サービスと連携するシステムの裏側（バックエンド）を作ります。データの受け渡しや入力チェック、エラー発生時の安全な処理まで含め、実用的なシステムとして実装します。",
+  },
+  {
+    index: "04",
+    title: "IoT・デバイス制御",
+    body: "センサーからのデータ取得、デバイス上でのデータ処理、クラウドへの送信までを一貫して制御します。小型のハードウェアを使い、「測る・判断する・送る」仕組みを形にします。",
+  },
+];
+
+const articles = [
+  {
+    href: "/articles/why-learning-python",
+    category: "コア思想",
+    title: "AIがコードを書ける時代に、なぜスクールや体系的な学びが必要なのか？",
+    excerpt:
+      "AIの出力を見抜く目利き力、技術選定の引き出し、独学では得られないプロの指導。これからの時代に基礎から学び直す理由を、実務の視点から整理します。",
+  },
+  {
+    href: "/articles/python-roadmap",
+    category: "学習ロードマップ",
+    title: "プログラミング未経験から実務レベルのPythonを習得する4ステップ",
+    excerpt:
+      "Google Colabでの基礎文法から、実践的なライブラリの活用、オリジナル成果物の作成、Git/GitHubでの公開まで。迷わず進める学習手順と達成の目安を解説します。",
+  },
+  {
+    href: "/articles/python-schools-comparison",
+    category: "スクール比較",
+    title: "Python・AIプログラミングスクール徹底比較｜エンジニア目線の選び方",
+    excerpt:
+      "マンツーマン指導、チャットサポート、資格対策、買い切り型教材。それぞれの特徴を比較し、あなたの学習スタイルや目標に合うスクールを整理します。",
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <section class="relative overflow-hidden border-b border-slate-800">
+    <div class="bg-grid absolute inset-0" aria-hidden="true"></div>
+    <div
+      class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.22),transparent_58%)]"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative mx-auto max-w-6xl px-4 py-20 md:py-28">
+      <p class="font-mono text-xs tracking-[0.18em] text-emerald-400">PYTHON CAREER LAB</p>
+      <h1 class="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-100 md:text-5xl">
+        AI時代に淘汰されない、本物のPythonエンジニアへ
+      </h1>
+      <div class="mt-6 max-w-3xl space-y-4 text-base leading-relaxed text-slate-300 md:text-lg">
+        <p>
+          コードの下書きはAIが作れるようになりました。それでも人間に残る決定的な差は、「AIの出力が正しいかを見極め、課題に対して最適な技術を選べること」です。
+        </p>
+        <p>
+          Python Career Labでは、Pythonでできることの全体像から、未経験からの習得ロードマップ、失敗しないスクールの選び方まで、現場で開発を行うエンジニアの視点で体系的にまとめています。
+        </p>
+      </div>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="/articles/python-roadmap"
+          class="inline-flex min-h-11 items-center justify-center rounded-lg bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-400"
+        >
+          学習ロードマップを見る
+        </a>
+        <a
+          href="/articles/python-schools-comparison"
+          class="inline-flex min-h-11 items-center justify-center rounded-lg border border-emerald-400/80 px-5 py-2.5 text-sm font-semibold text-emerald-400 hover:bg-emerald-400/10"
+        >
+          スクールを比較する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="capabilities" class="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 md:py-20">
+    <div class="max-w-3xl">
+      <p class="font-mono text-xs tracking-[0.18em] text-emerald-400">CAPABILITIES</p>
+      <h2 class="mt-3 text-2xl font-bold tracking-tight text-slate-100 md:text-3xl">Pythonでできること</h2>
+      <p class="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
+        文法の基礎を学んだ先には、実際の仕事として求められる4つの主要領域があります。最初からすべてを網羅する必要はありません。まずは1つの領域で動く成果物を作り、そこから知識を広げていくことで、AIのコードも正しく評価・修正できるようになります。
+      </p>
+    </div>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {
+        capabilities.map((item) => (
+          <article class="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 transition-colors hover:border-blue-500/50">
+            <p class="font-mono text-xs text-emerald-400">{item.index}</p>
+            <h3 class="mt-3 text-lg font-semibold text-slate-100">{item.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-300">{item.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="articles" class="border-t border-slate-800">
+    <div class="mx-auto max-w-6xl px-4 py-16 md:py-20">
+      <div class="max-w-3xl">
+        <p class="font-mono text-xs tracking-[0.18em] text-emerald-400">ARTICLES</p>
+        <h2 class="mt-3 text-2xl font-bold tracking-tight text-slate-100 md:text-3xl">解説記事</h2>
+        <p class="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
+          「なぜ今学ぶのか」「どの順番で手を動かすべきか」「どこからプロの指導を取り入れるべきか」。以下の3つの記事を読むことで、学習の全体像を一通り掴むことができます。
+        </p>
+      </div>
+      <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        {
+          articles.map((article) => (
+            <a
+              href={article.href}
+              class="group flex flex-col rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition-colors hover:border-blue-500/50 hover:bg-slate-900"
+            >
+              <p class="text-xs font-medium text-blue-400">{article.category}</p>
+              <h3 class="mt-3 text-base font-semibold leading-snug text-slate-100 group-hover:text-white">
+                {article.title}
+              </h3>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-400">{article.excerpt}</p>
+              <p class="mt-5 text-sm font-medium text-emerald-400">記事を読む</p>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

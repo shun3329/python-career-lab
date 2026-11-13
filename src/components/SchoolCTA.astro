@@ -1,0 +1,54 @@
+---
+const COMPARISON_PAGE = "/articles/python-schools-comparison";
+
+// TODO: A8.net提携後に計測URLを設定
+const PYTHON_WINNER_COUNSELING_URL = "";
+const NINJA_CODE_TRIAL_URL = "";
+
+function offerHref(url: string, sectionId: string): string {
+  return url.startsWith("https://") ? url : `${COMPARISON_PAGE}#${sectionId}`;
+}
+
+const links = [
+  {
+    href: offerHref(PYTHON_WINNER_COUNSELING_URL, "python-winner"),
+    label: "Python Winner の詳細・特徴をみる",
+    className: "bg-blue-500 text-white hover:bg-blue-400",
+  },
+  {
+    href: offerHref(NINJA_CODE_TRIAL_URL, "ninja-code"),
+    label: "忍者CODE の詳細・特徴をみる",
+    className:
+      "border border-emerald-400/80 bg-slate-950 text-emerald-400 hover:bg-emerald-400/10",
+  },
+];
+---
+
+<aside
+  class="not-prose mt-16 scroll-mt-24 rounded-2xl border border-blue-500/40 bg-gradient-to-br from-slate-900 to-slate-950 p-6 shadow-[inset_0_1px_0_0_rgba(52,211,153,0.25)] md:p-8"
+>
+  <p class="font-mono text-xs tracking-wide text-emerald-400">NEXT STEP</p>
+  <h2 class="mt-2 text-2xl font-bold tracking-tight text-slate-100">
+    自分に合った学び方を、無料相談で確かめてみる
+  </h2>
+  <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
+    独学で一番詰まりやすいのは、文法そのものよりも「学ぶ順番」と「どこまで作れば実務レベルと言えるのか」の判断基準です。カリキュラムの内容やサポートの密度は、無料のカウンセリングや体験レッスンで自分の現在のスキルと照らし合わせて確認してみてください。
+  </p>
+  <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          rel={link.href.startsWith("https://") ? "sponsored nofollow noopener" : undefined}
+          target={link.href.startsWith("https://") ? "_blank" : undefined}
+          class:list={[
+            "inline-flex min-h-11 items-center justify-center rounded-lg px-4 py-2.5 text-center text-sm font-semibold transition-colors",
+            link.className,
+          ]}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+</aside>

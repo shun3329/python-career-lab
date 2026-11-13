@@ -1,0 +1,236 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const title =
+  "Python・AIプログラミングスクール徹底比較｜エンジニア目線の選び方 | Python Career Lab";
+const description =
+  "フィードバックの密度と、手が止まったときに質問できる環境を基準に、Pythonを学べる4つのスクール・教材をエンジニア目線で比較します。";
+
+// TODO: A8.net提携後に計測URLを設定
+const PYTHON_WINNER_URL = "";
+const NINJA_CODE_URL = "";
+const WIN_SCHOOL_URL = "";
+const DAITRA_URL = "";
+
+function offerHref(url: string): string {
+  return url.startsWith("https://") ? url : "#comparison-table";
+}
+
+interface School {
+  id: string;
+  name: string;
+  heading: string;
+  summary: string;
+  format: string;
+  support: string;
+  pricingModel: string;
+  audience: string;
+  strengths: string[];
+  fit: string;
+  ctaLabel: string;
+  href: string;
+}
+
+const schools: School[] = [
+  {
+    id: "python-winner",
+    name: "Python Winner（Winスクール）",
+    heading: "Python Winner（Winスクール）｜マンツーマン指導・Python特化",
+    summary:
+      "Pythonの習得に学習範囲を絞ったマンツーマン指導型スクールです。基礎文法の次に何を作るべきか迷いやすい段階でも、講師と相談しながら課題を整理して進められます。",
+    format: "マンツーマン指導（Python特化）",
+    support: "個別指導・無料カウンセリング",
+    pricingModel: "受講プランに応じて個別案内（カウンセリングで確認）",
+    audience: "動画教材だけでは手が止まる人。Pythonに絞って質問しながら確実に進めたい人。",
+    strengths: [
+      "Pythonに特化しているため、他の言語に寄り道せず最短距離で学べる",
+      "マンツーマン指導のため、つまずいたポイントをその場で質問・解消しやすい",
+      "無料カウンセリングで現在のスキルと目標のギャップを事前に確認できる",
+    ],
+    fit: "動画や書籍の独学だけでは手が止まってしまう人、コードの解釈や設計の疑問をその場で講師に聞きながら進めたい人におすすめです。",
+    ctaLabel: "比較表で条件を再確認する",
+    href: offerHref(PYTHON_WINNER_URL),
+  },
+  {
+    id: "ninja-code",
+    name: "忍者CODE",
+    heading: "忍者CODE｜実践課題中心・無制限チャットサポート",
+    summary:
+      "実際に手を動かして作る実践課題と、回数を気にせず質問できるチャットサポートを組み合わせたオンラインスクールです。",
+    format: "実践課題中心・オンライン学習",
+    support: "チャットサポート無制限・無料相談 / 体験",
+    pricingModel: "コースごとの買い切り・プラン制（公式サイトで確認）",
+    audience: "毎日少しずつ手を動かし、詰まった箇所を文章で質問しながら進められる人。",
+    strengths: [
+      "インプットだけでなく「実際にコードを書いて作る」ことを重視した実践的なカリキュラム",
+      "チャットサポートが充実しており、エラーや疑問点を何度でも質問できる",
+      "無料相談や無料体験レッスンで、学習の進め方や質問のしやすさを事前に確かめられる",
+    ],
+    fit: "毎日コツコツと手を動かし、「どこまで試して、どこでエラーが出たか」を整理してチャットで質問できる人とは非常に相性が良い環境です。",
+    ctaLabel: "比較表で条件を再確認する",
+    href: offerHref(NINJA_CODE_URL),
+  },
+  {
+    id: "win-school",
+    name: "Winスクール（総合）",
+    heading: "Winスクール（総合）｜個人レッスン・資格と実務の両立",
+    summary:
+      "Python単体に限らず、関連するITスキルや資格取得まで幅広く個人レッスンで学びたい方向けの総合スクールです。",
+    format: "個人レッスン（総合IT）",
+    support: "担当講師による個別指導・無料カウンセリング",
+    pricingModel: "講座や資格目標に応じて個別案内（カウンセリングで確認）",
+    audience: "転職や社内評価のために、IT資格の取得と実務スキルの両方を身につけたい人。",
+    strengths: [
+      "資格対策と実務スキルの習得を、同じ個別指導の環境で並行して進められる",
+      "業務自動化やデータ分析など、目的に応じた周辺知識まで幅広くカバーできる",
+      "無料カウンセリングで、キャリア目標に合わせた最適な受講プランを相談できる",
+    ],
+    fit: "就職・転職活動や社内でのキャリアアップに向けて、ポートフォリオだけでなく客観的な資格もあわせてアピールしたい人に適しています。",
+    ctaLabel: "比較表で条件を再確認する",
+    href: offerHref(WIN_SCHOOL_URL),
+  },
+  {
+    id: "daitra",
+    name: "デイトラ（Pythonコース）",
+    heading: "デイトラ（Pythonコース）｜買い切り型教材・コスパ重視",
+    summary:
+      "買い切り型のオンライン教材をベースに、自分のペースで学習を進められるコストパフォーマンス重視のコースです。",
+    format: "買い切り型・オンライン教材",
+    support: "教材ベースの自走学習（質問サポート期間あり）",
+    pricingModel: "買い切り型・追加課金なし（公式サイトで確認）",
+    audience: "すでに自分で検索して試行錯誤できる人。費用を最初に確定させてマイペースに学びたい人。",
+    strengths: [
+      "買い切り型のため追加費用の心配がなく、自分のペースで何度でも復習できる",
+      "自分で検索して解決する習慣がある人にとっては、非常に費用対効果が高い",
+      "講師のスケジュールに縛られず、自分の作業量に応じてどんどん先へ進める",
+    ],
+    fit: "すでに基礎文法やエラー検索に慣れており、マンツーマン指導よりも「体系化された良質な教材」を手頃な価格で手に入れたい人に向いています。",
+    ctaLabel: "比較表で条件を再確認する",
+    href: offerHref(DAITRA_URL),
+  },
+];
+
+const columns = [
+  { key: "format", label: "学習スタイル" },
+  { key: "support", label: "サポート体制" },
+  { key: "pricingModel", label: "料金の目安・体系" },
+  { key: "audience", label: "こんな人に向いている" },
+] as const;
+---
+
+<Layout title={title} description={description}>
+  <article class="mx-auto max-w-6xl px-4 py-12 md:py-16">
+    <header class="max-w-3xl">
+      <p class="text-xs font-medium text-blue-400">スクール比較</p>
+      <h1 class="mt-3 text-3xl font-bold leading-tight tracking-tight text-slate-100 md:text-4xl">
+        Python・AIプログラミングスクール徹底比較｜エンジニア目線の選び方
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-slate-300">
+        プログラミングスクールを選ぶ基準は、広告の知名度ではありません。最も重要なのは、「自分のコードに対してどれだけ密なフィードバックをもらえるか」と、「学習中に手が止まったとき、いつでも質問して前に進める環境があるか」の2点です。以下の3つの評価軸をもとに、Pythonを学べる代表的な4つのスクール・教材をエンジニア目線で比較しました。
+      </p>
+    </header>
+
+    <section class="mt-10 grid gap-4 md:grid-cols-3">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+        <h2 class="text-sm font-semibold text-emerald-400">フィードバックの密度</h2>
+        <p class="mt-2 text-sm leading-relaxed text-slate-300">
+          マンツーマン指導はコードの読み違いや認識のズレをその場で修正できます。チャットサポートは無制限に質問できるため、エラー状況を文章で整理できる人ほど恩恵が大きくなります。買い切り型教材はサポートが最小限な分、自分で調べて解決する力が求められます。
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+        <h2 class="text-sm font-semibold text-emerald-400">実務に近い成果物が残るか</h2>
+        <p class="mt-2 text-sm leading-relaxed text-slate-300">
+          単なる「修了証」よりも、GitHubに「入力・エラー処理・README」が揃ったオリジナル成果物を残せるカリキュラムかどうかが、実務や転職での評価に直結します。
+        </p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
+        <h2 class="text-sm font-semibold text-emerald-400">学習の順番との一致</h2>
+        <p class="mt-2 text-sm leading-relaxed text-slate-300">
+          未経験者は
+          <a href="/articles/python-roadmap" class="text-blue-400 hover:underline">4ステップの学習ロードマップ</a>
+          のどの段階でつまずきやすいかによって、選ぶべきサポート形式が変わります。
+        </p>
+      </div>
+    </section>
+
+    <section id="comparison-table" class="mt-12 scroll-mt-24" aria-labelledby="comparison-table-heading">
+      <h2 id="comparison-table-heading" class="text-2xl font-bold tracking-tight text-slate-100">
+        比較表
+      </h2>
+      <div class="mt-4 overflow-x-auto rounded-2xl border border-slate-800">
+        <table class="min-w-[960px] w-full border-collapse text-left text-sm">
+          <thead class="bg-slate-900 text-slate-100">
+            <tr>
+              <th scope="col" class="px-4 py-3 font-semibold">スクール名</th>
+              {
+                columns.map((column) => (
+                  <th scope="col" class="px-4 py-3 font-semibold">
+                    {column.label}
+                  </th>
+                ))
+              }
+            </tr>
+          </thead>
+          <tbody>
+            {
+              schools.map((school) => (
+                <tr class="border-t border-slate-800 odd:bg-slate-950 even:bg-slate-900/40">
+                  <th scope="row" class="px-4 py-4 align-top font-semibold text-slate-100">
+                    <a href={`#${school.id}`} class="hover:text-blue-400">
+                      {school.name}
+                    </a>
+                  </th>
+                  {columns.map((column) => (
+                    <td class="px-4 py-4 align-top leading-relaxed text-slate-300">{school[column.key]}</td>
+                  ))}
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-12" aria-labelledby="reviews-heading">
+      <h2 id="reviews-heading" class="text-2xl font-bold tracking-tight text-slate-100">詳細レビュー</h2>
+      <div class="mt-4 grid gap-4 lg:grid-cols-2">
+        {
+          schools.map((school, index) => (
+            <article id={school.id} class="scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900/50 p-6">
+              <p class="font-mono text-xs text-emerald-400">{index + 1}</p>
+              <h3 class="mt-2 text-xl font-semibold leading-snug text-slate-100">{school.heading}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-slate-300">{school.summary}</p>
+              <h4 class="mt-5 text-sm font-semibold text-slate-100">強み</h4>
+              <ul class="mt-2 space-y-2">
+                {school.strengths.map((strength) => (
+                  <li class="flex gap-3 text-sm leading-relaxed text-slate-300">
+                    <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" aria-hidden="true" />
+                    <span>{strength}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-5 text-sm leading-relaxed text-slate-300">
+                <span class="font-semibold text-slate-100">向いている人： </span>
+                {school.fit}
+              </p>
+              <a
+                href={school.href}
+                rel={school.href.startsWith("https://") ? "sponsored nofollow noopener" : undefined}
+                target={school.href.startsWith("https://") ? "_blank" : undefined}
+                class="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-blue-500 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-400"
+              >
+                {school.ctaLabel}
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <p class="mt-10 text-sm leading-relaxed text-slate-400">
+      各スクールのカリキュラム詳細や最新の受講料金は、時期によって改定される場合があります。まずは無料カウンセリングや体験レッスンを活用し、ご自身の目標や現在のスキルレベルに合うかどうかを直接確かめてみてください。AI時代に基礎から体系的に学ぶべき理由については、
+      <a href="/articles/why-learning-python" class="text-blue-400 hover:underline">コア思想の記事</a>
+      でも詳しく解説しています。
+    </p>
+  </article>
+</Layout>

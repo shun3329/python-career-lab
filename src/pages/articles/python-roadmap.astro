@@ -1,0 +1,166 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SchoolCTA from "../../components/SchoolCTA.astro";
+
+const title =
+  "プログラミング未経験から実務レベルのPythonを習得する4ステップ | Python Career Lab";
+const description =
+  "実務レベルとは、入力と失敗を説明でき、変更履歴つきで他人に引き渡せる状態です。未経験の方は Phase 1 から順に進めてください。";
+
+interface PhaseExample {
+  heading: string;
+  body: string;
+  code: string;
+}
+
+interface Phase {
+  id: string;
+  label: string;
+  title: string;
+  summary: string;
+  tasks: string[];
+  done: string;
+  example?: PhaseExample;
+}
+
+const phases: Phase[] = [
+  {
+    id: "phase-1",
+    label: "Step 1",
+    title: "Google Colabで基礎文法を動かす",
+    summary:
+      "環境構築のトラブルで挫折しないことが、この段階の目的です。ブラウザ上の Colab を使い、書いたコードが上から順番に実行される仕組みに慣れていきます。",
+    tasks: [
+      "セルの実行、エラー表示、直前の変数がメモリに残る挙動を確認する。",
+      "変数、数値と文字列、条件分岐（if）、ループ（for）、関数を、それぞれ短いセルで書いて動かす。",
+      "リストと辞書を使って「複数の値」と「名前つきの値」を使い分ける。",
+      "合計、件数、条件に合う要素の抽出など、10行前後の小さな演習を毎日1つ完了させる。",
+    ],
+    done: "赤いエラーメッセージを読み、変数名や型の間違いを自分で見つけて修正し、再実行して成功させることができる。",
+    example: {
+      heading: "演習の例",
+      body: "Phase 1 の最初の演習は、この程度のもので十分です。数字を変えて、計算結果が自分の予想と一致するかを確認します。",
+      code: `prices = [120, 80, 200]
+total = 0
+for price in prices:
+    total += price
+print(total)`,
+    },
+  },
+  {
+    id: "phase-2",
+    label: "Step 2",
+    title: "標準ライブラリと定番ライブラリで手順を道具にする",
+    summary:
+      "文法の次は、ファイルと表の扱いです。手作業で行っていた手順を、入力ファイルから出力ファイルへの変換処理としてスクリプトに書き直します。",
+    tasks: [
+      "テキスト、CSV、JSON データの読み書きを行い、ファイルが存在しないなどの失敗に備えて例外処理（try-except）を分ける。",
+      "処理を関数に分割し、同じコードをコピペで増やさない書き方を覚える。",
+      "表計算の集計やファイル名の整理など、自分の日常にある繰り返し作業を1つだけスクリプト化する。",
+      "Colab の外へ出る準備として、ローカル環境での仮想環境（venv）とパッケージ追加の意味だけを押さえる。",
+    ],
+    done: "手順書を見なくても、コードの「入力・処理・出力」を口頭で説明できるオリジナルスクリプトが1つ完成している。",
+  },
+  {
+    id: "phase-3",
+    label: "Step 3",
+    title: "テーマを一つに絞って、他人が触れる形にする",
+    summary:
+      "「AI」「業務自動化」「Web・API開発」「IoT」の4区分からテーマを1つだけ選びます。広く浅くすべてに手をつけるより、入出力とエラー処理が説明できる1つの作品の方が、実務の現場に直結します。",
+    tasks: [
+      "「誰が何を入力し、何が出力されるか」を1文で定義する（これが書けないテーマはまだ大きすぎます）。",
+      "Webならリクエストの検証とエラー応答、自動化なら失敗時のログ、機械学習なら評価に使ったサンプルデータを残す。",
+      "AIにコードを書かせた箇所には、自分の言葉で「なぜその処理にしているのか」をコメントや README に書き残す。",
+      "意図的に不正なデータを入力し、プログラムが安全に落ちる（またはエラーを返す）ことを確認する。",
+    ],
+    done: "第三者が同じ手順でプログラムを動かし、正常系と異常系をそれぞれ1つずつ再現できる。",
+  },
+  {
+    id: "phase-4",
+    label: "Step 4",
+    title: "Git / GitHub で履歴とポートフォリオにする",
+    summary:
+      "実務で評価されるのは、きれいな完成画面のスクリーンショットよりも「開発の履歴」です。何をどの順番で修正したかが残っていると、コードレビューの具体的な会話が始まります。",
+    tasks: [
+      "意味のある単位でこまめにコミットする（動いた状態と、デバッグ中で壊れている状態をごちゃ混ぜにしない）。",
+      "README に、解決した課題、選んだ技術、動かし方の手順、現時点での制限事項を書く。",
+      "GitHub に公開し、パスワードや API キーなどの機密情報がコミット履歴に含まれていないか必ず確認する。",
+      "面接や社内共有では、コード自体の自慢よりも「なぜその別案を捨ててこの実装にしたのか」を話せるようにする。",
+    ],
+    done: "リポジトリの URL を渡すだけで、相手がプログラムの目的と動かし方に迷わず到達できる。",
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <article class="mx-auto max-w-3xl px-4 py-12 md:py-16">
+    <header>
+      <p class="text-xs font-medium text-blue-400">学習ロードマップ</p>
+      <h1 class="mt-3 text-3xl font-bold leading-tight tracking-tight text-slate-100 md:text-4xl">
+        プログラミング未経験から実務レベルのPythonを習得する4ステップ
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-slate-300">
+        ここで言う「実務レベル」とは、すべてのライブラリや構文を暗記していることではありません。「自分の書いたコードの入力と失敗が説明でき、変更履歴つきで他人に引き渡せる状態」を指します。未経験の方は、必ず
+        Phase 1 から順番に進めてください。
+      </p>
+    </header>
+
+    <ol class="mt-10 space-y-6">
+      {
+        phases.map((phase) => (
+          <li
+            id={phase.id}
+            class="scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 md:p-8"
+          >
+            <p class="font-mono text-xs tracking-wide text-emerald-400">{phase.label}</p>
+            <h2 class="mt-2 text-xl font-semibold tracking-tight text-slate-100 md:text-2xl">
+              {phase.title}
+            </h2>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">{phase.summary}</p>
+            <h3 class="mt-6 text-sm font-semibold text-slate-100">やること</h3>
+            <ul class="mt-3 space-y-2">
+              {phase.tasks.map((task) => (
+                <li class="flex gap-3 text-sm leading-relaxed text-slate-300">
+                  <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" aria-hidden="true" />
+                  <span>{task}</span>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-6 rounded-xl border border-emerald-400/30 bg-emerald-400/5 px-4 py-3 text-sm leading-relaxed text-slate-200">
+              <span class="font-semibold text-emerald-400">完了の目安： </span>
+              {phase.done}
+            </p>
+            {phase.example && (
+              <div class="mt-6">
+                <h3 class="text-sm font-semibold text-slate-100">{phase.example.heading}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-300">{phase.example.body}</p>
+                <p class="mt-4 font-mono text-xs text-slate-500">Python</p>
+                <pre
+                  class="mt-2 overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 p-4 font-mono text-sm leading-relaxed text-slate-200"><code
+                  >{phase.example.code}</code></pre>
+              </div>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+
+    <div
+      class="prose prose-invert prose-slate mt-10 max-w-none prose-headings:text-slate-100 prose-p:text-slate-300 prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline"
+    >
+      <h2>進め方のルール</h2>
+      <p>
+        各段階は、前の完了目安をクリアしてから次のステップへ進んでください。Phase 3
+        でのテーマの選び方は
+        <a href="/#capabilities">Pythonでできること</a>
+        の4区分を参考にしてください。「なぜこの順番で学ぶのか」「AIに指示する前に何を確認すべきか」の理由は
+        <a href="/articles/why-learning-python">コア思想の記事</a>
+        で解説しています。独学で完了の目安を判定するのが難しいと感じたら、
+        <a href="/articles/python-schools-comparison">スクール比較</a>
+        でプロのフィードバックを受ける方法を確認してみてください。
+      </p>
+    </div>
+
+    <SchoolCTA />
+  </article>
+</Layout>
